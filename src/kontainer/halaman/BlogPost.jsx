@@ -52,8 +52,8 @@ class BlogPost extends Component{
     }
 
     postDataKeAPI = () => {
-        axios.post('http://localhost:3004/inidataposts', this.state.formBlogPost)
-        .then((hasil) => {
+        GlobalAPI.postNewsBlog(this.state.formBlogPost)
+        .then((hasil)=>{
             console.log(hasil);
             this.panggilGetPostAPI();
             this.setState({
@@ -65,7 +65,6 @@ class BlogPost extends Component{
                     userId: 1
                 }
             })
-            
         }, (gagal) => {
             console.log('gagal: ', gagal);
         })
