@@ -71,10 +71,10 @@ class BlogPost extends Component{
     }
 
     putDataKeAPI = () => {
-        axios.put(`http://localhost:3004/inidataposts/${this.state.formBlogPost.id}`, this.state.formBlogPost) // link yg digunakan merupakan link json-server
-        .then((hasil)=> {
-            // console.log(hasil);
-            this.panggilGetPostAPI()
+        GlobalAPI.putNewsBlog(this.state.formBlogPost, this.state.formBlogPost.id)
+        .then((hasil)=>{
+            console.log(hasil);
+            this.panggilGetPostAPI();
             this.setState({
                 // Untuk membersihkan inputan setelah submit
                 formBlogPost: {
@@ -82,19 +82,27 @@ class BlogPost extends Component{
                     title: '',
                     body: '',
                     userId: 1
-                },
-                isEdit: false
+                }
             })
+        }, (gagal) => {
+            console.log('gagal: ', gagal);
         })
+
     }
     
     handleClickHapus = (data) => {
-        // console.log(data)
-        axios.delete(`http://localhost:3004/inidataposts/${data}`) // link yg digunakan merupakan link json-server
+        GlobalAPI.deleteNewsBlog(data)
         .then((hasil)=> {
             // console.log(hasil);
             this.panggilGetPostAPI()
         })
+        
+        // // console.log(data)
+        // axios.delete(`http://localhost:3004/inidataposts/${data}`) // link yg digunakan merupakan link json-server
+        // .then((hasil)=> {
+        //     // console.log(hasil);
+        //     this.panggilGetPostAPI()
+        // })
 
     }
 
