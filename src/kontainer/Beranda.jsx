@@ -6,6 +6,7 @@ import Produk from './halaman/produk/Produk';
 import LifeCycleKomponen from './halaman/LifeCycleKomponen';
 import BlogPost from './halaman/BlogPost';
 import Yutup from './halaman/Yutup';
+import Hooks from '../iniHooks/Hooks';
 // Style
 import './Beranda.css';
 import Post_Detail from './halaman/Post_Detail';
@@ -20,6 +21,7 @@ class Beranda extends Component {
                         <Link to="/produk">Produk</Link>
                         <Link to="/laifsaikel">Lifecycle</Link>
                         <Link to="/youtube">Youtube</Link>
+                        <Link to="/hooks">Hooks</Link>
                     </div>
                     <Route path="/" exact component={BlogPost}/>
                     {/* tanpa props 'exact' disini, setiap penggunaan '/' akan memanggil halaman Blogpost */}
@@ -27,6 +29,7 @@ class Beranda extends Component {
                     <Route path="/produk" component={Produk}/>
                     <Route path="/laifsaikel" component={LifeCycleKomponen}/>
                     <Route path="/youtube" component={Yutup}/>
+                    <Route path="/hooks" component={Hooks}/>
                 </Fragment>
             </BrowserRouter>
         ) 
